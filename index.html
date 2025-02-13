@@ -12,6 +12,7 @@
             color: #ff4d79;
             text-align: center;
             overflow-x: hidden;
+            font-family: 'Comic Sans MS', 'Times New Roman', sans-serif !important; /* Plain font, no italics or cursive */
         }
         .big-text {
             font-size: 4rem;
@@ -60,8 +61,9 @@
 
         /* Mobile-specific styles */
         @media (max-width: 768px) {
-            * {
-                font-family: 'Comic Sans MS', cursive, sans-serif !important; /* Ensure Comic Sans MS is applied */
+            /* Apply plain Comic Sans MS for mobile screens */
+            body, .big-text, .scroll-text, .dialog-box, .btn-yes, .btn-no, * {
+                font-family: 'Comic Sans MS', 'Times New Roman', sans-serif !important;
             }
 
             .big-text {
