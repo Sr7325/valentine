@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffe6f2;
+            color: #ff4d79;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .big-text {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-top: 20vh;
+        }
+        .scroll-text {
+            font-size: 2rem;
+            margin-top: 30vh;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .dialog-box {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px #ff4d79;
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+        }
+        .spacer {
+            height: 120vh;
+        }
+        .btn-yes {
+            background-color: #b5e7a0;
+            color: #3d5a33;
+            border: none;
+        }
+        .btn-yes:hover {
+            background-color: #a2d89c;
+        }
+        .btn-no {
+            background-color: #e57373;
+            color: #5a2323;
+            border: none;
+        }
+        .btn-no:hover {
+            background-color: #d66b6b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="big-text">SCROLL DOWN, CUTIE</div>
+        <div class="spacer"></div>
+        <div class="scroll-text" id="text1">Hey Darakshan, my sexy lil cute dummy,</div>
+        <div class="spacer"></div>
+        <div class="scroll-text" id="text2">I have a little question for you👉👈</div>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="dialog-box p-4" id="questionBox">
+        <h2 id="question">Darakshan, will you be my Valentine?❤️✨</h2>
+        <p id="subtext">(You better soch samajhke answer, I have lots of chappal and shoes at home)</p>
+        <button class="btn btn-yes" id="yesButton">Yes, of course</button>
+        <button class="btn btn-no" id="noButton">No, try harder</button>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+        let messages = [
+            "How dare you!", "I told you I have chappal!", "I also have shoes!", 
+            "Chappal chhodo, I also have chaku", "I'll kill you!", "😭Main sachme marungi", 
+            "Darakshan!", "I'll go mad!!", "Ab punishment confirmed tumhari", "You're dead"
+        ];
+        let isDialogVisible = false;
+
+        window.addEventListener("scroll", function() {
+            let scrollPosition = window.scrollY;
+            let screenHeight = window.innerHeight;
+
+            if (scrollPosition > screenHeight * 0.5) {
+                document.getElementById("text1").style.opacity = "1";
+            }
+            if (scrollPosition > screenHeight * 1.5) {
+                document.getElementById("text2").style.opacity = "1";
+            }
+            if (scrollPosition > screenHeight * 2.5 && !isDialogVisible) {
+                document.getElementById("questionBox").style.display = "block";
+                isDialogVisible = true;
+            }
+        });
+
+        document.getElementById("yesButton").addEventListener("click", function() {
+            document.getElementById("question").innerText = "Thank you cutie! Now you're my sexy lil Valentine's date";
+            document.getElementById("subtext").style.display = "none";
+            document.getElementById("yesButton").style.display = "none";
+            document.getElementById("noButton").style.display = "none";
+        });
+
+        document.getElementById("noButton").addEventListener("click", function() {
+            noClickCount++;
+            if (noClickCount < 10) {
+                document.getElementById("question").innerText = messages[noClickCount - 1];
+                document.getElementById("subtext").style.display = "none";
+            } else {
+                document.getElementById("question").innerText = "Ab karke dikhao";
+                document.getElementById("noButton").style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
